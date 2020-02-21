@@ -1,5 +1,5 @@
+const Employee = require('./lib/Employee')
 
-class Manager extends Employee {
-  constructor (name, id, title)
+const employee = new Employee('Rocky', 1234,'manager')
 
-}
+employee.getRole()
