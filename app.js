@@ -7,14 +7,16 @@ const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 
+async function createTeam(){
 
-
-async function createTeam() {
   let employeeList = []
-  let employeeInput = {}
+  let employee = {}
+  let employeeInput = ''
+  let extraIntup = ''
+  let more = ''
   try {
-
-    employeeInput = await prompt(
+    do {
+    let employeeInput = await prompt(
       [
         {
           type: 'list',
@@ -37,31 +39,62 @@ async function createTeam() {
           name: 'email',
           message: 'Employee Email:'
         }
-      ]
-    )
-      switch (employeeInput.type) {
+      ])
+      employee.type = employeeInput.employeeType
+      employee.name = employeeInput.name
+      employee.id = employeeInput.id
+      employee.email = employeeInput.email
+
+      switch (employee.type) {
         case 'Manager':
-          employeeList.push(new Manager(employeeInput.name, employeeInput.id, employeeInput.email))
+          extraInput = await prompt(
+            {
+              type: 'input',
+              name: 'roomNumber',
+              message: 'Enter room number:'
+            }
+          )
+          employee.roomNumber = extraInput.roomNumber
+          employeeList.push(new Manager(employee.name, employee.id, employee.email, employee.roomNumber))
           break
-        case 'Engeneer':
-          employeeList.push(new Manager(employeeInput.name, employeeInput.id, employeeInput.email))
+        case 'Engineer':
+          extraInput = await prompt(
+            {
+              type: 'input',
+              name: 'gitHub',
+              message: 'Enter GIT-hub:'
+            }
+          )
+          employee.gitHub = extraInput.gitHub
+          employeeList.push(new Engineer(employee.name, employee.id, employee.email, employee.gitHub))
           break
         case 'Intern':
-          employeeList.push(new Manager(employeeInput.name, employeeInput.id, employeeInput.email))
+          extraInput = await prompt(
+            {
+              type: 'input',
+              name: 'school',
+              message: 'Enter School:'
+            }
+          )
+          employee.school = extraInput.school
+          employeeList.push(new Intern(employee.name, employee.id, employee.email, employee.school))
           break
+          
       }
-      console.log(employeeList)
-      
+      more = await prompt(
+      {
+        type: 'confirm',
+        name: 'more',
+        message: 'Any more employees?'
+      })
+    }while (more.more)
+    console.log(employeeList)
 
-      
-    // console.log(employeeInput)
 
-  } catch (e) {
-    console.log.error(e)
-  }
+    
+
+  } catch (e){ console.error(e)}
 }
-
-
 
 createTeam()
 
