@@ -34,7 +34,7 @@ async function createTeam() {
             message: 'Employee name:'
           },
           {
-            type: 'number',
+            type: 'input',
             name: 'id',
             message: 'Employee ID:'
           },
@@ -153,9 +153,9 @@ function renderEmployees(employee) {
              <i class="material-icons">${employee[i].getIcon()}</i>
             </div>
             <div class="collection">
-              <p href="#!" class="collection-item">${employee[i].getId()}</p>
-              <p href="#!" class="collection-item">${employee[i].getEmail()}</p>
-              <p href="#!" class="collection-item">${employee[i].getOfficeNumber()}</p>
+              <p href="#!" class="collection-item">ID: ${employee[i].getId()}</p>
+              <p href="#!" class="collection-item">Email:${employee[i].getEmail()}</p>
+              <p href="#!" class="collection-item">Office Number: ${employee[i].getOfficeNumber()}</p>
             </div>
           </div>
         </div>`
@@ -173,9 +173,9 @@ function renderEmployees(employee) {
              <i class="material-icons">${employee[i].getIcon()}</i>
             </div>
             <div class="collection">
-              <p href="#!" class="collection-item">${employee[i].getId()}</p>
-              <p href="#!" class="collection-item">${employee[i].getEmail()}</p>
-              <p href="#!" class="collection-item">${employee[i].getGithub()}</p>
+              <p href="#!" class="collection-item">ID: ${employee[i].getId()}</p>
+              <p href="#!" class="collection-item">Email: ${employee[i].getEmail()}</p>
+              <p href="#!" class="collection-item">GitHub: ${employee[i].getGithub()}</p>
             </div>
           </div>
         </div>`
@@ -193,9 +193,9 @@ function renderEmployees(employee) {
              <i class="material-icons">${employee[i].getIcon()}</i>
             </div>
             <div class="collection">
-              <p href="#!" class="collection-item">${employee[i].getId()}</p>
-              <p href="#!" class="collection-item">${employee[i].getEmail()}</p>
-              <p href="#!" class="collection-item">${employee[i].getSchool()}</p>
+              <p href="#!" class="collection-item">ID: ${employee[i].getId()}</p>
+              <p href="#!" class="collection-item">Email: ${employee[i].getEmail()}</p>
+              <p href="#!" class="collection-item">School: ${employee[i].getSchool()}</p>
             </div>
           </div>
         </div>`
